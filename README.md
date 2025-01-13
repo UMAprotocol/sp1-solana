@@ -48,7 +48,7 @@ Here is a snippet from the [example script](./example/script/src/main.rs) that d
 
 /// The instruction data for the program.
 #[derive(BorshDeserialize, BorshSerialize)]
-pub struct SP1Groth16Proof {
+pub struct SP1Groth16Proof {****
     pub proof: Vec<u8>,
     pub sp1_public_inputs: Vec<u8>,
 }
