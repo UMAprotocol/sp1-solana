@@ -127,7 +127,12 @@ async fn main() {
         proof: sp1_proof_with_public_values.bytes(),
         sp1_public_inputs: sp1_proof_with_public_values.public_values.to_vec(),
     };
-    println!("Created Groth16 proof with {} public inputs", groth16_proof.sp1_public_inputs.len());
+    println!("Public inputs: {:?}", sp1_proof_with_public_values.public_values);
+    let bytes = sp1_proof_with_public_values.public_values.as_slice();
+    let n = u32::from_le_bytes(bytes[0..4].try_into().unwrap());
+    let a = u32::from_le_bytes(bytes[4..8].try_into().unwrap());
+    let b = u32::from_le_bytes(bytes[8..12].try_into().unwrap());
+    println!("Public values: (n: {}, a: {}, b: {})", n, a, b);
 
     if args.devnet {
         // Use RpcClient for devnet
