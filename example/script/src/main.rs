@@ -127,6 +127,7 @@ async fn main() {
         proof: sp1_proof_with_public_values.bytes(),
         sp1_public_inputs: sp1_proof_with_public_values.public_values.to_vec(),
     };
+    println!("Created Groth16 proof with {} public inputs", groth16_proof.sp1_public_inputs.len());
 
     if args.devnet {
         // Use RpcClient for devnet
